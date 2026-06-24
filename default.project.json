@@ -2,30 +2,20 @@
   "name": "Mirage",
   "tree": {
     "$className": "DataModel",
-    "ReplicatedFirst": {
-      "$path": "src/ReplicatedFirst",
-      "$ignoreUnknownInstances": true
-    },
     "ReplicatedStorage": {
-      "$path": "src/ReplicatedStorage",
+      "$className": "ReplicatedStorage",
       "$ignoreUnknownInstances": true,
-      "Packages": {
-        "$path": "Packages"
+      "Mirage": {
+        "$path": "src"
       }
     },
     "ServerScriptService": {
-      "$path": "src/ServerScriptService",
+      "$className": "ServerScriptService",
       "$ignoreUnknownInstances": true
     },
-    "ServerStorage": {
-      "$path": "src/ServerStorage",
+    "Workspace": {
+      "$className": "Workspace",
       "$ignoreUnknownInstances": true
-    },
-    "StarterPlayer": {
-      "StarterPlayerScripts": {
-        "$path": "src/StarterPlayerScripts",
-        "$ignoreUnknownInstances": true
-      }
     }
   }
 }

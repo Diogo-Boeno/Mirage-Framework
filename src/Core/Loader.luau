@@ -1,3 +1,6 @@
+-- Loader
+-- Loads all modules of certain folders or single modules
+
 local Loader = {}
 local _modules = {}
 local _started = false
@@ -12,17 +15,17 @@ local function tryRequire(moduleScript: ModuleScript)
 end
 
 function Loader.Register(module: any)
-    assert(not _started, "Cannot register after Loader started")
-    assert(type(module) == "table", "Module must be a table")
+    assert(not _started, 'Cannot register after Loader started')
+    assert(type(module) == "table", 'Module must be a table')
     table.insert(_modules, module)
 end
 
 function Loader.LoadDescendants(folder: Instance)
-    assert(not _started, "Cannot load after Loader started")
-    for _, child in folder:GetDescendants() do
-        if child:IsA("ModuleScript") then
+    assert(not _started, 'Cannot load after Loader started')
+    for i, child in folder:GetChildren() do
+        if child:IsA('ModuleScript') then
             local module = tryRequire(child)
-            if type(module) == "table" then
+            if type(module) == 'table' then
                 table.insert(_modules, module)
             end
         end
@@ -41,13 +44,11 @@ function Loader.Start()
         end
     end
     for _, module in _modules do
-        if type(module.Start) == "function" then
-            task.spawn(function()
-                local ok, err = pcall(module.Start, module)
-                if not ok then
-                    warn(`[Loader] Start failed: {err}`)
-                end
-            end)
+        if type(module.Start) == 'function' then
+            local ok, err = pcall(module.Start, module)
+            if not ok then
+                warn(`[Loader] Start failed: {err}`)
+            end
         end
     end
 end
