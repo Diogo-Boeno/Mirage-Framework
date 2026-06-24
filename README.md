@@ -1,6 +1,8 @@
 # Mirage
 
-Roblox project by Cosmo.
+The framework where worlds exist as data, not objects.
+
+Built for Roblox Simulators that need to scale.
 
 ## Setup
 

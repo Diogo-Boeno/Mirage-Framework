@@ -9,3 +9,4 @@ sourcemap.json
 Thumbs.db
 node_modules/
 .vscode/
+/DevPackages/
