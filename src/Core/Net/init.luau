@@ -26,7 +26,7 @@ local function getRemote(name: string) : RemoteEvent
         local remote = remotesFolder:FindFirstChild(name)
         if not remote then
             remote = Instance.new('RemoteEvent')
-            remote.name = name
+            remote.Name = name
             remote.Parent = remotesFolder
         end
         return remote
@@ -43,7 +43,7 @@ end
 
 function Net.FireClient(name: string, player: Player, ...)
     assert(IS_SERVER, 'Net.FireClient only on server')
-    getRemote(name):FireClient(...)
+    getRemote(name):FireClient(player, ...)
 end
 
 function Net.FireAllClients(name: string, ...)

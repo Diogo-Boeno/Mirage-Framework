@@ -27,8 +27,9 @@ function Signal.new()
     }, Signal)
 end
 
-function Signal:Connect(fn: (...any)->())
-    local connection
+function Signal:Connect(fn)
+    local connection = Connection.new(self, fn)
+    connection.Connected = true
     table.insert(self._connection, connection)
     return connection
 end
@@ -59,7 +60,7 @@ function Signal:Wait()
 end
 
 function Signal:Destroy()
-    for _, connection in self._connections do
+    for _, connection in self._connection do
         connection.Connected = false
     end
     self._connection = {}
