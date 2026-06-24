@@ -29,6 +29,12 @@ end
 
 function Signal:Connect(fn: (...any)->())
     local connection
+    table.insert(self._connection, connection)
+    return connection
+end
+
+function Signal:Once(fn: (...any)->())
+    local connection
     connection = self:Connect(function(...)
         connection:Disconnect()
         fn(...)
